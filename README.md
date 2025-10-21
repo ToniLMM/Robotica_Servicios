@@ -5,6 +5,7 @@ This will be Toni's Services Robotics blog, where the status of the practices, t
 
 * [Index][Ind]
 * [Practice 1][p1]
+* [Practice 2][p2]
 
 [Ind]: https://github.com/ToniLMM/Robotica_Servicios/blob/main/README.md#index
 [p1]: https://github.com/ToniLMM/Robotica_Servicios/blob/main/README.md#practice-1-localized-vacuum-cleaner
@@ -18,3 +19,7 @@ The objective of this exercise is to implement the logic of a navigation algorit
 
 
 ## Practice 2: Rescue People
+
+### Goal
+
+The goal of this exercise is to implement the logic that allows a quadrotor to recognize the faces of lost people and save their locations in order to perform a subsequent rescue maneuver.
