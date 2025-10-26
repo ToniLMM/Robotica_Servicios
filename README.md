@@ -59,6 +59,19 @@ Using the theory from MapTools’ UTM Guide (https://www.maptools.com/tutorials/
 
 #### 3º - Converting to Local Coordinates
 
+Since the drone’s control system operates in a local frame centered on the takeoff point, we compute the relative displacement between the two positions in meters:
+
+```py
+lat_diff = (target_lat - reference_lat) * 111320
+lon_diff = (target_lon - reference_lon) * 111320 * cos(reference_lat)
+x = -lat_diff
+y = -lon_diff
+```
+
+- The X-axis represents the North–South direction.
+- The Y-axis represents the East–West direction.
+- The negative signs ensure the correct orientation according to the simulation’s coordinate system.
+
 ### Final version
 
 <img width="186" height="618" alt="image" src="https://github.com/user-attachments/assets/9230907f-5108-4faa-85c4-094b7a313138" /> <img width="209" height="422" alt="image" src="https://github.com/user-attachments/assets/372c3fcc-633a-4714-9969-b7613d24bcd4" />
