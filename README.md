@@ -24,6 +24,14 @@ The objective of this exercise is to implement the logic of a navigation algorit
 
 The goal of this exercise is to implement the logic that allows a quadrotor to recognize the faces of lost people and save their locations in order to perform a subsequent rescue maneuver.
 
+### Get the coordinates
+
 ### Final version
 
 ### Final video
+
+The video is accelerated x4 the original duration is 13.07 minutes:
+
+
+https://github.com/user-attachments/assets/223ec903-b07e-4466-a8e9-b2ef89bb3f58
+
