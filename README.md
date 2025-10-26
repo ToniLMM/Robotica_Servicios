@@ -115,6 +115,14 @@ This version is a state machine where I use 5 states:
 - RETURN: The drone computes a direct path back to its takeoff point. It maintains a slightly higher altitude during the return flight for safety. When it gets within 1 meter of the starting position, it transitions to the LAND state.
 - LAND: The drone performs a controlled descent until it reaches a safe altitude. Then it executes an automatic landing using the HAL.land() command.
 
+### Difficulties
+
+Once I had completed the entire route, there were many faces that the drone didn't recognize. Talking to people in class who had the same problem, they told me that one solution could be to rotate the image at different angles to better detect faces. In this way I rotated the image 360º divided into 45º turns resulting in 8 turns per iteration:
+
+```py
+rotation_angles = [0, 45, -45, 90, -90, 135, -135, 180]
+```
+
 ### Final video
 
 The video is accelerated x4 the original duration is 13.07 minutes:
