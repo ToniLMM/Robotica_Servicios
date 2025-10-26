@@ -28,6 +28,11 @@ The goal of this exercise is to implement the logic that allows a quadrotor to r
 
 ### Final version
 
+<img width="186" height="618" alt="image" src="https://github.com/user-attachments/assets/9230907f-5108-4faa-85c4-094b7a313138" /> <img width="209" height="422" alt="image" src="https://github.com/user-attachments/assets/372c3fcc-633a-4714-9969-b7613d24bcd4" />
+![WhatsApp Image 2025-10-26 at 19 51 30](https://github.com/user-attachments/assets/f669e148-6229-433d-8521-10ba87a19263)
+
+
+
 ### Final video
 
 The video is accelerated x4 the original duration is 13.07 minutes:
