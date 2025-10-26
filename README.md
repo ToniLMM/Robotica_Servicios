@@ -26,6 +26,39 @@ The goal of this exercise is to implement the logic that allows a quadrotor to r
 
 ### Get the coordinates
 
+#### 1º - Converting Degrees–Minutes–Seconds to Decimal Degrees
+Before the drone can navigate autonomously, we need to translate geographic coordinates (latitude and longitude) into local metric coordinates (X, Y) that the control system can use for movement. This conversion process involves three main steps:
+
+The original GPS positions were given in the DMS (Degrees, Minutes, Seconds) format:
+
+- Safety boat: 40º16’48.2” N, 3º49’03.5” W
+- Survivors: 40º16’47.23” N, 3º49’01.78” W
+
+To simplify calculations, these were converted into decimal degrees using an online converter:
+Montana State Converter: https://rcn.montana.edu/Resources/Converter.aspx
+
+The result was:
+```py
+SAFETY_BOAT_GPS = (40.280055555555556, -3.817638888888889)
+SURVIVORS_GPS = (40.27978611111111, -3.817161111111111)
+```
+#### 2º - Understanding UTM Coordinates
+
+The UTM (Universal Transverse Mercator) system divides the Earth into 60 longitudinal zones, each covering 6° of longitude. Instead of degrees, UTM uses meters as units.
+
+For each point, UTM provides:
+
+- Easting (X): Distance in meters from the zone’s central meridian.
+- Northing (Y): Distance in meters from the Equator.
+
+In our case (Madrid area), both points are located in Zone 30T of the UTM grid.
+Using the theory from MapTools’ UTM Guide (https://www.maptools.com/tutorials/utm/quick_guide), we can understand that small changes in latitude and longitude correspond to roughly constant meter distances:
+
+- 1° of latitude ≈ 111,320 m
+- 1° of longitude ≈ 111,320 × cos(latitude)
+
+#### 3º - Converting to Local Coordinates
+
 ### Final version
 
 <img width="186" height="618" alt="image" src="https://github.com/user-attachments/assets/9230907f-5108-4faa-85c4-094b7a313138" /> <img width="209" height="422" alt="image" src="https://github.com/user-attachments/assets/372c3fcc-633a-4714-9969-b7613d24bcd4" />
