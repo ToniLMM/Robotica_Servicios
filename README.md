@@ -72,6 +72,31 @@ y = -lon_diff
 - The Y-axis represents the East–West direction.
 - The negative signs ensure the correct orientation according to the simulation’s coordinate system.
 
+### Face detection
+
+During the search mission, the drone uses two onboard cameras — a frontal camera and a ventral camera.
+
+- The frontal camera provides a general view of the environment for monitoring through the GUI.
+- The ventral camera is mainly used for automatic face detection while the drone follows its search pattern.
+
+Face detection is implemented using OpenCV’s Haar Cascade classifier, a machine-learning model trained to recognize human faces.
+Each frame from the ventral camera is converted to grayscale and processed by the cascade detector:
+
+```py
+faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=4,
+                                      minSize=(20, 20), maxSize=(100, 100))
+```
+
+Whenever one or more faces are detected, the system:
+
+1. Draws a blue rectangle around each face in the image.
+
+2. Checks if the detection corresponds to a new survivor by comparing the current drone position with previously recorded detections.
+
+3. If it’s a new person, the current drone coordinates (X, Y, Z) are stored in a list called found_faces.
+
+This way, the drone builds a record of all detected survivors along its path, avoiding duplicate entries and enabling a summary of their estimated positions once the mission ends.
+
 ### Final version
 
 <img width="186" height="618" alt="image" src="https://github.com/user-attachments/assets/9230907f-5108-4faa-85c4-094b7a313138" /> <img width="209" height="422" alt="image" src="https://github.com/user-attachments/assets/372c3fcc-633a-4714-9969-b7613d24bcd4" />
