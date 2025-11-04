@@ -6,10 +6,12 @@ This will be Toni's Services Robotics blog, where the status of the practices, t
 * [Index][Ind]
 * [Practice 1][p1]
 * [Practice 2][p2]
+* [Practice 3][p3]
 
 [Ind]: https://github.com/ToniLMM/Robotica_Servicios/blob/main/README.md#index
 [p1]: https://github.com/ToniLMM/Robotica_Servicios/blob/main/README.md#practice-1-localized-vacuum-cleaner
 [p2]: https://github.com/ToniLMM/Robotica_Servicios/blob/main/README.md#practice-2-rescue-people
+[p3]: https://github.com/ToniLMM/Robotica_Servicios/blob/main/README.md#practice-3-autoparking
 
 ## Practice 1: Localized Vacuum Cleaner
 
@@ -130,3 +132,5 @@ The video is accelerated x4 the original duration is 13.07 minutes:
 
 https://github.com/user-attachments/assets/223ec903-b07e-4466-a8e9-b2ef89bb3f58
 
+
+## Practice 3: Autoparking
