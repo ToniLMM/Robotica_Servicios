@@ -134,3 +134,7 @@ https://github.com/user-attachments/assets/223ec903-b07e-4466-a8e9-b2ef89bb3f58
 
 
 ## Practice 3: Autoparking
+
+### Goal
+
+The objective of this exercise is to implement the logic of a navigation algorithm for an automated vehicle. The vehicle must find a parking space and park properly
