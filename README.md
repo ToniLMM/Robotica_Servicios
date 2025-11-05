@@ -139,4 +139,8 @@ https://github.com/user-attachments/assets/223ec903-b07e-4466-a8e9-b2ef89bb3f58
 
 The objective of this exercise is to implement the logic of a navigation algorithm for an automated vehicle. The vehicle must find a parking space and park properly
 
+### First approach
+
 <img width="1120" height="586" alt="Screenshot from 2025-11-04 17-57-06" src="https://github.com/user-attachments/assets/977a5c89-a169-45d6-8e65-00e208097396" />
+
+### Final video
