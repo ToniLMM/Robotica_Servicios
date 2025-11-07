@@ -208,6 +208,82 @@ Video without a front car, the video is accelerated x2:
 
 https://github.com/user-attachments/assets/7f6e17c2-04a3-4012-87e4-0eb200ed1a05
 
+This video was recorded after I sent the code un Aula virtual, so I did some changes:
+
+In STATE_ADVANCE_TO_PARK if the back_dist is over 9.5m the car changes state to STATE_BACKWARD_RIGHT to start the parking maneuver:
+```
+elif current_state == STATE_ADVANCE_TO_PARK:
+        print(f"ACERCANDOSE A COCHE DELANTERO: Distancia trasera: {back_dist:.2f}m")
+        
+        if back_dist > 9.5:
+            change_state(STATE_BACKWARD_RIGHT, current_yaw_deg)
+        if back_dist > BACK_OBSTACLE_DISTANCE:
+            HAL.setV(LINEAR_SPEED)
+            HAL.setW(0.0)
+        else:
+            change_state(STATE_BACKWARD_RIGHT, current_yaw_deg)
+```
+
+I added some details in detect_parking_gap(). When there is no car in front, the gap continues indefinitely. This modified code detects these "open-ended" gaps at the end of the sensor's range, while the Aula Virtual code only detects gaps that are "closed" by obstacles:
+
+```
+def detect_parking_gap(laser_data):
+    readings = laser_data.values
+    
+    gap_start = None
+    max_gap_width = 0
+    gap_depth = 0
+    best_gap_depth = 0
+    
+    for i, distance in enumerate(readings):
+        if laser_data.minRange < distance < laser_data.maxRange:
+            if distance > LASER_DISTANCE_THRESHOLD:
+                if gap_start is None:
+                    gap_start = i
+                    gap_depth = distance
+                
+                if distance > gap_depth:
+                    gap_depth = distance
+            else:
+                if gap_start is not None:
+                    gap_end = i
+                    gap_width = gap_end - gap_start
+                    
+                    if gap_width > max_gap_width:
+                        max_gap_width = gap_width
+                        best_gap_depth = gap_depth
+                    
+                    gap_start = None
+                    gap_depth = 0
+    
+    if gap_start is not None:
+        gap_end = len(readings) - 1
+        gap_width = gap_end - gap_start
+        
+        if gap_width > max_gap_width:
+            max_gap_width = gap_width
+            best_gap_depth = gap_depth
+    
+    if best_gap_depth > 0:
+        gap_depth = best_gap_depth
+    
+    gap_angle_width = max_gap_width * (180.0 / len(readings))
+    estimated_width = gap_depth * math.tan(math.radians(gap_angle_width / 2)) * 2
+    
+    if (estimated_width >= MIN_GAP_WIDTH and 
+        gap_depth >= MIN_GAP_DEPTH and 
+        max_gap_width >= 50):
+        return True, estimated_width, gap_depth
+    
+    return False, estimated_width, gap_depth
+```
+
+At last BACK_OBSTACLE_DISTANCE must be changed to 2.2:
+```
+BACK_OBSTACLE_DISTANCE = 2.2
+```
+
+With this changes both cases works perfectly.
 
 Final result:
 
