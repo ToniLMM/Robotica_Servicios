@@ -188,7 +188,13 @@ STATE_PARKED = 8
 
 4. After identifying a suitable parking spot, the vehicle enters STATE_ADVANCE_TO_PARK, positioning itself optimally relative to the target space. The system advances forward until the rear obstacle distance reaches the optimal threshold, ensuring the vehicle is perfectly positioned to begin the reverse parking maneuver. This careful positioning is crucial for executing the subsequent parking steps accurately.
 
-5. The actual parking maneuver consists of three coordinated reverse states. First, STATE_BACKWARD_RIGHT initiates the reverse parking by moving backward while turning right, adjusting the vehicle's angle.
+5. The actual parking maneuver consists of three coordinated reverse states. First, STATE_BACKWARD_RIGHT initiates the reverse parking by moving backward while turning right, adjusting the vehicle's angle. This creates the initial entry angle into the parking space.
+
+6. Then STATE_BACKWARD_STRAIGHT continues the reverse motion in a straight line for exactly 3 meters, carefully monitoring the distance traveled using position tracking.
+
+7. The final reverse phase, STATE_BACKWARD_LEFT, completes the parking alignment by moving backward while turning left to straighten the vehicle within the parking space. This state monitors both the vehicle's orientation and rear obstacle distance. If the system detects an obstacle too close behind (less than 0.5 meters), it triggers a safety maneuver to adjust position, otherwise it continues until achieving the target orientation.
+
+8. The system concludes with STATE_PARKING, which performs fine adjustments by moving forward and turning right to achieve perfect alignment within the parking space. This final adjustment ensures the vehicle is centered and properly oriented. Finally, STATE_PARKED represents the completion state where all systems are stopped and the parking maneuver is successfully completed
 
 ### Final video
 
