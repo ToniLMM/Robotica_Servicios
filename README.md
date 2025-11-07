@@ -208,3 +208,7 @@ Final result:
 
 <img width="1114" height="292" alt="image" src="https://github.com/user-attachments/assets/d870d655-6d50-4934-8ee7-132480596605" />
 
+### Difficulties
+
+At first, when I only entered linear speed, the car seemed to veer off course, however, I then realized that the road wasn't completely straight. This way my turns aren't entirely precise and the parking is done with angles that aren't completely accurate. For example, at the end of the video you can see that my car ends up at -89.3º when the straight car should be at -94 (approximately). However, in practical terms, this hardly affects the functioning or the human eye.
+
