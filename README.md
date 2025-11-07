@@ -146,6 +146,21 @@ The objective of this exercise is to implement the logic of a navigation algorit
 
 ### Laser data
 
+This practice is based on the interpretation of laser data. That's why we have 3 lasers: one front, one rear, and one side (right).
+
+Rear and front lasers are used for the same, avoid colliding with obstacles. They both scan all laser readings.
+
+On the other hand right side laser is used to identify suitable parking spaces. This function analyzes consecutive laser readings to find gaps between obstacles and calculates estimated gap width using trigonometric formulas
+```py
+def detect_parking_gap(laser_data):
+    # [Implementation details...]
+    if (estimated_width >= MIN_GAP_WIDTH and 
+        gap_depth >= MIN_GAP_DEPTH and 
+        max_gap_width >= 50):
+        return True, estimated_width, gap_depth
+```
+
+
 ### Final algorithm
 
 ### Final video
