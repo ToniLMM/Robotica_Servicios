@@ -144,8 +144,14 @@ The objective of this exercise is to implement the logic of a navigation algorit
 <img width="1120" height="586" alt="Screenshot from 2025-11-04 17-57-06" src="https://github.com/user-attachments/assets/977a5c89-a169-45d6-8e65-00e208097396" />
 
 Final result:
-<img width="1103" height="278" alt="image" src="https://github.com/user-attachments/assets/75962d90-41db-4662-841b-679f63783bce" />
+
+<img width="1114" height="292" alt="image" src="https://github.com/user-attachments/assets/d870d655-6d50-4934-8ee7-132480596605" />
+
 
 
 ### Final video
+
+The video is accelerated x2:
+
+https://github.com/user-attachments/assets/aa511a0a-e0a2-4d1d-9ef1-76c5cd8e028c
 
