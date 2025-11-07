@@ -163,6 +163,33 @@ def detect_parking_gap(laser_data):
 
 ### Final algorithm
 
+This is a pretty accurate drawing about the functioning of my algorithm (I forgot to draw the left turn when the approaching to the cars is completed)
+
+![WhatsApp Image 2025-11-07 at 18 40 49](https://github.com/user-attachments/assets/d5c93547-dc0a-49e1-b62a-4849f7c4c183)
+
+My final algorithm is composed of 9 states:
+```
+STATE_MOVE_RIGHT = 0
+STATE_TURN_LEFT = 1
+STATE_SEARCH_GAP = 2
+STATE_ADVANCE_TO_PARK = 3
+STATE_BACKWARD_RIGHT = 4
+STATE_BACKWARD_STRAIGHT = 5
+STATE_BACKWARD_LEFT = 6
+STATE_PARKING = 7
+STATE_PARKED = 8
+```
+
+1. The process begins with STATE_MOVE_RIGHT, where the vehicle approaches the parked cars while moving forward and turning right. During this phase, the system continuously monitors front obstacle distances, and when an obstacle gets too close, it transitions to the next state to begin the proper alignment for parking.
+
+2. Once the vehicle detects a frontal obstacle, it enters STATE_TURN_LEFT to properly orient itself parallel to the parking spaces. This careful angular adjustment ensures the vehicle is perfectly aligned for the parking space search phase that follows.
+
+3. The STATE_SEARCH_GAP represents the critical detection phase where the system scans for suitable parking spaces using the right-side laser sensor. The vehicle moves forward slowly while the algorithm analyzes distance patterns to identify gaps between vehicles that meet the minimum requirements of 2.5 meters width and 4 meters depth.
+
+4. After identifying a suitable parking spot, the vehicle enters STATE_ADVANCE_TO_PARK, positioning itself optimally relative to the target space. The system advances forward until the rear obstacle distance reaches the optimal threshold, ensuring the vehicle is perfectly positioned to begin the reverse parking maneuver. This careful positioning is crucial for executing the subsequent parking steps accurately.
+
+5. The actual parking maneuver consists of three coordinated reverse states. First, STATE_BACKWARD_RIGHT initiates the reverse parking by moving backward while turning right, adjusting the vehicle's angle.
+
 ### Final video
 
 The video is accelerated x2:
