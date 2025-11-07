@@ -200,9 +200,14 @@ STATE_PARKED = 8
 
 ### Final video
 
-The video is accelerated x2:
+Video between 2 cars, the video is accelerated x2:
 
 https://github.com/user-attachments/assets/aa511a0a-e0a2-4d1d-9ef1-76c5cd8e028c
+
+Video without a front car, the video is accelerated x2:
+
+https://github.com/user-attachments/assets/7f6e17c2-04a3-4012-87e4-0eb200ed1a05
+
 
 Final result:
 
