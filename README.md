@@ -141,6 +141,8 @@ The objective of this exercise is to implement the logic of a navigation algorit
 
 ### First approach
 
+During the first days I was trying so that the car would get as close as possible to the parked cars in order to maneuver better once a space was found.
+
 <img width="1120" height="586" alt="Screenshot from 2025-11-04 17-57-06" src="https://github.com/user-attachments/assets/977a5c89-a169-45d6-8e65-00e208097396" />
 
 
