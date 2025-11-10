@@ -7,11 +7,13 @@ This will be Toni's Services Robotics blog, where the status of the practices, t
 * [Practice 1][p1]
 * [Practice 2][p2]
 * [Practice 3][p3]
+* [Practice 4][p4]
 
 [Ind]: https://github.com/ToniLMM/Robotica_Servicios/blob/main/README.md#index
 [p1]: https://github.com/ToniLMM/Robotica_Servicios/blob/main/README.md#practice-1-localized-vacuum-cleaner
 [p2]: https://github.com/ToniLMM/Robotica_Servicios/blob/main/README.md#practice-2-rescue-people
 [p3]: https://github.com/ToniLMM/Robotica_Servicios/blob/main/README.md#practice-3-autoparking
+[p4]: https://github.com/ToniLMM/Robotica_Servicios/blob/main/README.md#practice-4-amazon-warehouse
 
 ## Practice 1: Localized Vacuum Cleaner
 
@@ -293,3 +295,8 @@ Final result:
 
 At first, when I only entered linear speed, the car seemed to veer off course, however, I then realized that the road wasn't completely straight. This way my turns aren't entirely precise and the parking is done with angles that aren't completely accurate. For example, at the end of the video you can see that my car ends up at -89.3º when the straight car should be at -94 (approximately). However, in practical terms, this hardly affects the functioning or the human eye.
 
+## Practice 4: Amazon Warehouse
+
+### Goal
+
+The objective of this exercise is to implement the logic that allows a logistics robot to deliver shelves to the required place by making use of the location of the robot. The robot is equipped with a map and knows its current location in it. The main objective will be to find the shortest path to complete the task.
