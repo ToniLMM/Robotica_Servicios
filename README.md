@@ -301,5 +301,7 @@ At first, when I only entered linear speed, the car seemed to veer off course, h
 
 The objective of this exercise is to implement the logic that allows a logistics robot to deliver shelves to the required place by making use of the location of the robot. The robot is equipped with a map and knows its current location in it. The main objective will be to find the shortest path to complete the task.
 
+The shelf dimensions are 2x0.8 meters:
+
 <img width="1110" height="429" alt="image" src="https://github.com/user-attachments/assets/6944ae99-0ae3-482b-a1d9-c91665646b46" />
 
