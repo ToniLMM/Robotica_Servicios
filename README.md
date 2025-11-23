@@ -305,3 +305,4 @@ The shelf dimensions are 2x0.8 meters:
 
 <img width="1110" height="429" alt="image" src="https://github.com/user-attachments/assets/6944ae99-0ae3-482b-a1d9-c91665646b46" />
 
+![WhatsApp Image 2025-11-24 at 00 06 26](https://github.com/user-attachments/assets/273acd7a-bdad-4e1f-a64e-af80e57b1164)
