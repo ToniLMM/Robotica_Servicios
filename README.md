@@ -306,3 +306,20 @@ The shelf dimensions are 2x0.8 meters:
 <img width="1110" height="429" alt="image" src="https://github.com/user-attachments/assets/6944ae99-0ae3-482b-a1d9-c91665646b46" />
 
 ![WhatsApp Image 2025-11-24 at 00 06 26](https://github.com/user-attachments/assets/273acd7a-bdad-4e1f-a64e-af80e57b1164)
+
+### Final Videos
+
+#### Holonomic robot
+
+Shelf 1:
+
+[Screencast from 2025-11-24 22-53-15.webm](https://github.com/user-attachments/assets/c16481be-4461-4b2d-8a07-7655fbe66125)
+
+Shelf 3:
+
+https://github.com/user-attachments/assets/517a39e2-066a-45e7-9fa7-64bce05d7cfc
+
+Shelf 5:
+
+https://github.com/user-attachments/assets/2ab80d14-0f04-45d9-82ce-c9bb64240089
+
