@@ -324,8 +324,8 @@ The simulator uses world coordinates (meters), while the map image uses pixel co
 To connect both systems, an affine transform is computed using 'cv2.getAffineTransform'.
 
 This transform allows:
-- converting robot poses from world → pixel for collision checking,
-- converting planned pixel paths → world coordinates for navigation,
+- converting robot poses from world to pixel for collision checking,
+- converting planned pixel paths to world coordinates for navigation,
 - drawing the planned route on the map.
 
 This transformation is essential because OMPL operates in world space, while obstacle checking is done in pixel space.
