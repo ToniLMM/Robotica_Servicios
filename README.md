@@ -320,7 +320,15 @@ The shelf dimensions are 2x0.8 meters:
 
 <img width="1110" height="429" alt="image" src="https://github.com/user-attachments/assets/6944ae99-0ae3-482b-a1d9-c91665646b46" />
 
-The warehouse map is loaded from a static image (map.png) using WebGUI.getMap(). Each pixel is converted to grayscale and processed into a binary obstacle map. An affine transform (cv2.getAffineTransform) maps between world coordinates and pixels, allowing precise path planning and real-time robot visualization. Small obstacle expansion ensures the robot avoids collisions during navigation.
+The simulator uses world coordinates (meters), while the map image uses pixel coordinates.  
+To connect both systems, an affine transform is computed using 'cv2.getAffineTransform'.
+
+This transform allows:
+- converting robot poses from world → pixel for collision checking,
+- converting planned pixel paths → world coordinates for navigation,
+- drawing the planned route on the map.
+
+This transformation is essential because OMPL operates in world space, while obstacle checking is done in pixel space.
 
 ### OMPL
 
