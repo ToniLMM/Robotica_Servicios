@@ -320,6 +320,31 @@ The shelf dimensions are 2x0.8 meters:
 
 <img width="1110" height="429" alt="image" src="https://github.com/user-attachments/assets/6944ae99-0ae3-482b-a1d9-c91665646b46" />
 
+The warehouse map is loaded from a static image (map.png) using WebGUI.getMap(). Each pixel is converted to grayscale and processed into a binary obstacle map. An affine transform (cv2.getAffineTransform) maps between world coordinates and pixels, allowing precise path planning and real-time robot visualization. Small obstacle expansion ensures the robot avoids collisions during navigation.
+
+### OMPL
+
+OMPL is a powerful library for motion planning that provides algorithms to find paths for robots while avoiding obstacles. It supports different types of planners, from sampling-based algorithms like RRT (Rapidly-exploring Random Tree) and RRT* to control-based planners suitable for non-holonomic robots, such as car-like robots. OMPL operates over a State Space, where each state represents a possible configuration of the robot (position, orientation, etc.), and uses a State Validity Checker to ensure that states and transitions are collision-free.
+
+
+#### OMPL Parameters 
+
+| Parameter | Code | Description | Typical Value / Notes |
+|-----------|------|-------------|---------------------|
+| **Turning Radius** | `space = ob.ReedsSheppStateSpace(turning_radius)` | Minimum turning radius of the robot. Ensures paths respect the robot's kinematic limits. | `0.5 m` |
+| **State Bounds** | `bounds.setLow(0, -warehouse_width/2); bounds.setHigh(0, warehouse_width/2)` | Defines the allowed `(x, y)` planning area, keeping the robot inside the warehouse. | Warehouse size: `20.62 x 13.6 m` |
+| **State Validity Checking Resolution** | `si.setStateValidityCheckingResolution(0.01)` | Fraction of each path segment checked for collisions. Smaller values = more precise checks, slower planning. | `0.01` (1%) |
+| **Planner Choice** | `planner = og.RRTstar(si)` | Sampling-based planner that finds feasible paths and optimizes them over time. | `RRT*` |
+| **Planner Range** | `planner.setRange(10)` | Maximum distance a new node can extend from an existing node. | `10` meters (adjust for map scale) |
+| **Goal Bias** | `planner.setGoalBias(0.8)` | Probability of sampling directly towards the goal, speeding up convergence. | `0.8` (80%) |
+| **Goal Threshold** | `goal_region.setThreshold(0.12)` | Distance tolerance for reaching the goal. | `0.12 m` |
+| **Path Interpolation** | `solution_path.interpolate(10)` | Adds intermediate waypoints for smoother robot motion. | `10` points between waypoints |
+| **Custom Exploration Sampler** | `exploration_sampler = ExplorationStateSampler(space, rrt_explored)` | Records all sampled states for visualization and debugging. | N/A |
+
+These parameters ensure that the robot can generate collision-free and optimized paths in the warehouse environment.
+
+
+
 ### Final Videos
 
 #### Holonomic robot widened obstacles
