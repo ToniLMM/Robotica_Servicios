@@ -309,7 +309,7 @@ The shelf dimensions are 2x0.8 meters:
 
 ### Final Videos
 
-#### Holonomic robot
+#### Holonomic robot widened obstacles
 
 Shelf 1:
 
@@ -322,4 +322,18 @@ https://github.com/user-attachments/assets/517a39e2-066a-45e7-9fa7-64bce05d7cfc
 Shelf 5:
 
 https://github.com/user-attachments/assets/2ab80d14-0f04-45d9-82ce-c9bb64240089
+
+
+#### Holonomic robot only geometric constraints
+
+Shelf 2:
+
+https://github.com/user-attachments/assets/9b2afc79-d5b6-40b0-a898-7f11ac5b2546
+
+Shelf 3:
+
+[Screencast from 2025-11-25 12-24-38.webm](https://github.com/user-attachments/assets/e848a421-6680-4677-b55e-4d31f57c99e7)
+
+
+
 
