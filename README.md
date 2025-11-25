@@ -343,6 +343,33 @@ OMPL is a powerful library for motion planning that provides algorithms to find 
 
 These parameters ensure that the robot can generate collision-free and optimized paths in the warehouse environment.
 
+### isStateValid
+
+The function 'isStateValid(state)' is responsible for determining whether a robot configuration (x, y, yaw) is collision-free. OMPL calls this function repeatedly during planning to ensure every sampled state and motion segment is safe.
+
+In this code, isStateValid performs the following checks:
+
+1. **Convert robot pose to map coordinates**  
+   The robot's world position is transformed into pixel coordinates using the affine transform created earlier.
+
+2. **Compute the robot’s footprint**  
+   Based on the robot’s size (normal or carrying a shelf), the algorithm builds a rectangular polygon representing the robot in the map.  
+   This polygon is rotated according to the robot’s yaw.
+
+3. **Fill the polygon on a temporary mask**  
+   A binary mask is created with cv2.fillPoly, marking all pixels the robot would occupy in that state.
+
+4. **Collision test with obstacles**  
+   The mask is compared with obst_bool, the obstacle map.  
+   If any pixel of the robot overlaps with an obstacle, the state is invalid.
+
+5. **Return result**  
+   - True → the state is safe and OMPL can use it.  
+   - False → the state is rejected and the planner must sample another one.
+
+This validity checker is crucial because OMPL only produces paths composed of states that pass this function. In other words, no path segment is accepted unless every pose along it is collision-free.
+
+
 
 
 ### Final Videos
