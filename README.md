@@ -374,12 +374,12 @@ This validity checker is crucial because OMPL only produces paths composed of st
 
 The navigation logic is implemented as a state machine that guides the robot through planning, movement, lifting the shelf, and returning to the start. It is divided into well-defined phases to keep the behavior predictable and modular.
 
-#### 1. `WAITING_PLAN`
+#### 1. WAITING_PLAN
 The robot waits for its initial pose and then calls the OMPL planner to generate a path to the target shelf.  
 - Computes the path using Reeds–Shepp planning.  
 - Visualizes the explored nodes and planned route.
 
-#### 2. `NAVIGATING`
+#### 2. NAVIGATING
 The robot follows the generated waypoints sequentially.  
 Navigation is handled by improved_navigation(), which has two internal modes:
 - **TURN**: Rotate until the robot faces the waypoint.
@@ -387,20 +387,20 @@ Navigation is handled by improved_navigation(), which has two internal modes:
 
 Once the robot reaches a waypoint, it switches back to TURN for the next one.
 
-#### 3. Shelf Interaction: `LIFTING`
+#### 3. LIFTING
 When the robot reaches the shelf:
 - It lifts the shelf using HAL.lift().
 - Robot dimensions are updated (wider + longer).
 - The state validity checker is rebuilt to use the new footprint.
 
-#### 4. `WAITING_RETURN_PLAN`
+#### 4. WAITING_RETURN_PLAN
 A new OMPL plan is computed to return to the origin (0,0), now with the shelf attached.
 
-#### 5. `RETURNING`
+#### 5. RETURNING
 The same navigation logic is used to follow the return path.  
 The target is the origin, visualized with a separate marker.
 
-#### 6. `COMPLETED`
+#### 6. COMPLETED
 The robot stops, puts the shelf down, and the process ends.
 
 This structure allows the robot to perform a full warehouse pick-up and return cycle robustly and safely.
