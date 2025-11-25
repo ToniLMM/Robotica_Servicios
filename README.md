@@ -307,6 +307,15 @@ These are the measures and the axis of the map:
 
 ![WhatsApp Image 2025-11-24 at 00 06 26](https://github.com/user-attachments/assets/273acd7a-bdad-4e1f-a64e-af80e57b1164)
 
+There are 6 shelves and these are their coordinates: 
+
+1. (3.728, 0.579) 
+2. (3.728, -1.242)
+3. (3.728, -3.039) 
+4. (3.728, -4.827)
+5. (3.728, -6.781) 
+6. (3.728, -8.665)
+
 The shelf dimensions are 2x0.8 meters:
 
 <img width="1110" height="429" alt="image" src="https://github.com/user-attachments/assets/6944ae99-0ae3-482b-a1d9-c91665646b46" />
