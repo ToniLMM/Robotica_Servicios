@@ -8,12 +8,14 @@ This will be Toni's Services Robotics blog, where the status of the practices, t
 * [Practice 2][p2]
 * [Practice 3][p3]
 * [Practice 4][p4]
+* [Practice 5][p5]
 
 [Ind]: https://github.com/ToniLMM/Robotica_Servicios/blob/main/README.md#index
 [p1]: https://github.com/ToniLMM/Robotica_Servicios/blob/main/README.md#practice-1-localized-vacuum-cleaner
 [p2]: https://github.com/ToniLMM/Robotica_Servicios/blob/main/README.md#practice-2-rescue-people
 [p3]: https://github.com/ToniLMM/Robotica_Servicios/blob/main/README.md#practice-3-autoparking
 [p4]: https://github.com/ToniLMM/Robotica_Servicios/blob/main/README.md#practice-4-amazon-warehouse
+[p5]: https://github.com/ToniLMM/Robotica_Servicios/blob/main/README.md#practice-5-laser-mapping
 
 ## Practice 1: Localized Vacuum Cleaner
 
@@ -441,5 +443,12 @@ Shelf 3:
 [Screencast from 2025-11-25 12-24-38.webm](https://github.com/user-attachments/assets/e848a421-6680-4677-b55e-4d31f57c99e7)
 
 
+## Practice 5: Laser Mapping
 
+### Goal
+
+The goal of this exercise is to develop a navigation algorithm that allows a robot to autonomously explore a warehouse environment while generating an accurate map of the area using LIDAR sensor data.
+
+
+### Final Viedos
 
