@@ -453,9 +453,15 @@ The goal of this exercise is to develop a navigation algorithm that allows a rob
 ### Final Viedos
 
 
+
+
+https://github.com/user-attachments/assets/5e83a5b3-69af-4216-9bb1-e617abeea652
+
+
+
 #### Final Result
 
 
-<img width="1114" height="312" alt="Screenshot from 2025-12-08 20-00-53" src="https://github.com/user-attachments/assets/3f02d802-90db-42ce-b4df-d120ced50f0f" />
+<img width="1232" height="335" alt="image" src="https://github.com/user-attachments/assets/7e59de9d-28d5-4378-b5eb-cca7346f685f" />
 
 <img width="1114" height="312" alt="Screenshot from 2025-12-08 20-03-23" src="https://github.com/user-attachments/assets/29bf84a7-4db2-434a-a57b-04937424d01b" />
