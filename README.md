@@ -449,11 +449,23 @@ Shelf 3:
 
 The goal of this exercise is to develop a navigation algorithm that allows a robot to autonomously explore a warehouse environment while generating an accurate map of the area using LIDAR sensor data.
 
+### Probabilistic Occupancy Map & Bayesian Updates
+
+The robot builds its environment map using a probabilistic occupancy grid, where each cell holds a probability between 0 and 1. A value of 0 indicates the cell is free, 1 means occupied, and 0.5 represents unknown space.
+
+The mapping process starts with a completely unknown grid where all cells are set to 0.5. As the robot moves, it uses its LiDAR sensor to scan the surroundings. For every laser ray, the cells along the path are likely free, while the endpoint of the ray, if an obstacle is detected, is likely occupied. The likelihoods are represented with fixed probabilities: P_FREE = 0.3 and P_OCCUPIED = 0.9. These probabilities are not absolute but serve as evidence to incrementally update the map.
+
+To combine prior knowledge with new sensor readings, the robot uses Bayes’ theorem. Each cell’s probability is updated according to the formula:
+
+**Posterior = (Measurement × Prior) / (Measurement × Prior + (1 - Measurement) × (1 - Prior))**
+
+This ensures that multiple readings gradually adjust the cell’s probability. If a cell is consistently seen as free, its probability decreases toward 0, and if it is repeatedly detected as occupied, it moves toward 1. In cases of conflicting readings, the probabilities adapt smoothly rather than flipping abruptly, making the map robust to sensor noise.
+
+Finally, the probability grid is converted into a grayscale map for visualization. Cells with high occupancy probability become black, free cells become white, and uncertain cells appear gray. This results in a clear and continuously improving representation of the robot’s environment that guides navigation and decision-making.
+
 ### NAVIGATION
 
-The robot uses a finite state machine (FSM), this design keeps the navigation simple, robust, and easy to expand.
-
-
+The robot uses a finite state machine (FSM), this design keeps the navigation simple, robust, and easy to expand. These are the 5 states used:
 
 **INITIAL_TURN**: The robot performs an initial 90° rotation to align itself with a consistent global direction. This ensures that all future movements follow a stable reference orientation.
 
