@@ -459,7 +459,7 @@ https://github.com/user-attachments/assets/5e83a5b3-69af-4216-9bb1-e617abeea652
 
 With some noise (HAL.getOdom2()):
 
-https://github.com/user-attachments/assets/4b074639-6e04-4850-8b28-ba9db22ceccd
+https://github.com/user-attachments/assets/58e66fc2-edd0-4af8-beee-57704e04277c
 
 With much more noise (HAL.getOdom3()):
 
@@ -467,15 +467,12 @@ With much more noise (HAL.getOdom3()):
 
 Without noise (getPose3d()):
 
-<img width="1232" height="335" alt="image" src="https://github.com/user-attachments/assets/7e59de9d-28d5-4378-b5eb-cca7346f685f" />
-
 <img width="1114" height="312" alt="Screenshot from 2025-12-08 20-03-23" src="https://github.com/user-attachments/assets/29bf84a7-4db2-434a-a57b-04937424d01b" />
 
 With some noise (HAL.getOdom2()):
 
-<img width="1111" height="292" alt="image" src="https://github.com/user-attachments/assets/6b876226-94a3-4ab2-892f-e9e07169df93" />
+<img width="1113" height="264" alt="image" src="https://github.com/user-attachments/assets/dacdb63a-2d38-4013-a210-904c8e2e54ab" />
 
-<img width="1111" height="264" alt="image" src="https://github.com/user-attachments/assets/bdcb6cda-5bae-4fd3-96b7-cb968f9d01a3" />
 
 With much more noise (HAL.getOdom3()):
 
