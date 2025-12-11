@@ -453,12 +453,15 @@ The goal of this exercise is to develop a navigation algorithm that allows a rob
 ### Final Viedos
 
 
-
+Without noise:
 
 https://github.com/user-attachments/assets/5e83a5b3-69af-4216-9bb1-e617abeea652
 
+HAL.getOdom2():
+
 https://github.com/user-attachments/assets/4b074639-6e04-4850-8b28-ba9db22ceccd
 
+HAL.getOdom3():
 
 #### Final Result
 
