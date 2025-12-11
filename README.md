@@ -449,6 +449,19 @@ Shelf 3:
 
 The goal of this exercise is to develop a navigation algorithm that allows a robot to autonomously explore a warehouse environment while generating an accurate map of the area using LIDAR sensor data.
 
+### NAVIGATION
+
+The robot uses a finite state machine (FSM), this design keeps the navigation simple, robust, and easy to expand.
+
+
+
+**INITIAL_TURN**: The robot performs an initial 90° rotation to align itself with a consistent global direction. This ensures that all future movements follow a stable reference orientation.
+
+**FORWARD**: In this main exploration state, the robot drives straight ahead while monitoring obstacles with the LiDAR. If something is detected within a safety distance, the robot immediately stops and prepares to turn.
+
+**TURN_LEFT / TURN_RIGHT**: These states rotate the robot by a fixed angle when an obstacle blocks the path or when the exploration pattern requires a directional shift. A proportional controller ensures accurate rotation before moving on.
+
+**FORWARD_1M**: The robot advances exactly one meter using odometry feedback. This helps enforce a structured, grid-like exploration pattern. If an obstacle appears during this movement, the robot interrupts the motion and transitions into a turn.
 
 ### Final Viedos
 
