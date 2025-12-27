@@ -9,6 +9,7 @@ This will be Toni's Services Robotics blog, where the status of the practices, t
 * [Practice 3][p3]
 * [Practice 4][p4]
 * [Practice 5][p5]
+* [Practice 6][p6]
 
 [Ind]: https://github.com/ToniLMM/Robotica_Servicios/blob/main/README.md#index
 [p1]: https://github.com/ToniLMM/Robotica_Servicios/blob/main/README.md#practice-1-localized-vacuum-cleaner
@@ -16,6 +17,7 @@ This will be Toni's Services Robotics blog, where the status of the practices, t
 [p3]: https://github.com/ToniLMM/Robotica_Servicios/blob/main/README.md#practice-3-autoparking
 [p4]: https://github.com/ToniLMM/Robotica_Servicios/blob/main/README.md#practice-4-amazon-warehouse
 [p5]: https://github.com/ToniLMM/Robotica_Servicios/blob/main/README.md#practice-5-laser-mapping
+[p6]: https://github.com/ToniLMM/Robotica_Servicios/blob/main/README.md#practice-6-marker-based-visual-loc
 
 ## Practice 1: Localized Vacuum Cleaner
 
@@ -505,4 +507,10 @@ With much more noise (HAL.getOdom3()):
 <img width="1352" height="353" alt="image" src="https://github.com/user-attachments/assets/1fd02965-a640-438e-84f7-ae41dfd8b295" />
 
 
+## Practice 6: Marker Based Visual Loc
 
+### Goal
+
+The goal of this exercise is to estimate the position and orientation (pose) of a robot in a 2D space by detecting and analyzing visual markers, specifically AprilTags. This process involves using computer vision to identify the tags in the robot’s environment and mathematical methods to derive its relative pose to the detected tags.
+
+The green robot represents the real position. The blue robot represents the position from the odometry (with noise). The red robot represents the user estimated position.
