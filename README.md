@@ -544,6 +544,31 @@ cv2.circle(image, (cX, cY), 5, (0, 0, 255), -1)
 
 5. Select the closest tag: To estimate the robot’s pose accurately, the tag that appears largest in the image (closest to the robot) is used.
 
+
+### Camera Model and Intrinsic Parameters
+
+The intrinsic parameters describe how 3D points are projected onto the 2D image plane.
+
+In this practice, a simplified pinhole camera model is used, where the focal length is approximated using the image width:
+
+<pre><code class="language-python">
+focal_length = image.shape[1]
+center = (image.shape[1] / 2, image.shape[0] / 2)
+
+camera_matrix = np.array(
+    [[focal_length, 0, center[0]],
+     [0, focal_length, center[1]],
+     [0, 0, 1]],
+    dtype="double"
+)
+</code></pre>
+
+The distortion coefficients are assumed to be zero, simplifying the projection model:
+
+<pre><code class="language-python">
+dist_coeffs = np.zeros((4, 1))
+</code></pre>
+
 ### Pose Estimation Using PnP
 
 Once a tag is detected, we estimate the robot’s position and orientation using PnP (Perspective-n-Point). This algorithm calculates the 3D pose of an object from known 3D points and their corresponding 2D projections in the image.
