@@ -544,6 +544,10 @@ cv2.circle(image, (cX, cY), 5, (0, 0, 255), -1)
 
 5. Select the closest tag: To estimate the robot’s pose accurately, the tag that appears largest in the image (closest to the robot) is used.
 
+### Pose Estimation Using PnP
+
+
+
 ### Navigation
 
 This is a pseudo-random simple implementation, where the robot has 2 differnt states:
@@ -554,6 +558,7 @@ This is a pseudo-random simple implementation, where the robot has 2 differnt st
 
 ### Transformations and rotations
 
+For this implementation we used several transforamtions and rotations such as -90º rotation in x and -90º rotation in z
 
 
 ### Final video
