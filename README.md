@@ -548,7 +548,45 @@ cv2.circle(image, (cX, cY), 5, (0, 0, 255), -1)
 
 Once a tag is detected, we estimate the robot’s position and orientation using PnP (Perspective-n-Point). This algorithm calculates the 3D pose of an object from known 3D points and their corresponding 2D projections in the image.
 
+<pre><code class="language-python">
+success, rvec, tvec = cv2.solvePnP(
+    tag_points_3d,
+    image_points,
+    camera_matrix,
+    dist_coeffs,
+    flags=cv2.SOLVEPNP_IPPE_SQUARE
+)
+</code></pre>
 
+- rvec is the rotation vector describing the tag’s orientation relative to the camera.
+- tvec is the translation vector describing the tag’s position relative to the camera.
+
+
+### Transformations and rotations
+
+To convert the tag’s pose into the robot’s pose in the world frame, we perform a series of matrix transformations:
+
+Camera --> Marker: Apply the rotation and translation obtained from PnP.
+
+Marker --> World: Incorporate the tag’s known world position and orientation.
+
+World --> Robot: Apply the camera-to-robot transformation to get the robot’s position and yaw in world coordinates.
+
+<pre><code class="language-python">
+world2robot = world2marker @ marker2camera @ camera2robot_matrix
+</code></pre>
+
+Rotation matrices are used to adjust the axes correctly:
+
+- X-axis rotation: Corrects the orientation along the horizontal axis.
+- Z-axis rotation: Aligns the camera frame with the world frame.
+
+<pre><code class="language-python">
+def create_rotation_matrix_x(): ... # -90º (-pi/2)
+def create_rotation_matrix_z(): ... # -90º (-pi/2)
+</code></pre>
+
+Finally, we extract the (x, y, yaw) coordinates from the transformation matrix, giving the robot’s estimated pose.
 
 ### Navigation
 
@@ -557,10 +595,6 @@ This is a pseudo-random simple implementation, where the robot has 2 differnt st
 - STATE_SEARCHING: when no tags are detected, the robot rotates in place to scan its surroundings.
 
 - STATE_NAVIGATING: commands random values between -1 and 1 for the angular velocity and between 0.5 and 1.0 for the linear velocity when the tag is detected
-
-### Transformations and rotations
-
-For this implementation we used several transforamtions and rotations such as -90º rotation in x and -90º rotation in z
 
 
 ### Final video
