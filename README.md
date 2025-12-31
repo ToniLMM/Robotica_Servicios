@@ -515,6 +515,47 @@ The goal of this exercise is to estimate the position and orientation (pose) of 
 
 The green robot represents the real position. The blue robot represents the position from the odometry (with noise). The red robot represents the user estimated position.
 
+### AprilTag Detection
+
+AprilTags are binary fiducial markers designed for robust detection and pose estimation. Each tag has a unique ID and known position in the environment. Detecting a tag allows the robot to reference a fixed point in space to determine its own pose.
+
+1. Capture the image: The robot’s camera captures a frame.
+
+2. Convert to grayscale: Color information is not needed, so the image is converted to grayscale to simplify processing:
+
+<pre><code class="language-python">
+image = HAL.getImage()
+gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+</code></pre>
+
+3. Detect tags: Using pyapriltags, the system identifies any visible tags:
+
+<pre><code class="language-python">
+results = detector.detect(gray)
+</code></pre>
+
+4. Visualize the tags: For each detected tag, we draw its bounding box and center point on the image for better debugging and visualization:
+
+<pre><code class="language-python">
+cv2.line(image, ptA, ptB, (0, 255, 255), 2)
+cv2.circle(image, (cX, cY), 5, (0, 0, 255), -1)
+</code></pre>
+
+
+5. Select the closest tag: To estimate the robot’s pose accurately, the tag that appears largest in the image (closest to the robot) is used.
+
+### Navigation
+
+This is a pseudo-random simple implementation, where the robot has 2 differnt states:
+
+- STATE_SEARCHING: when no tags are detected, the robot rotates in place to scan its surroundings.
+
+- STATE_NAVIGATING: commands random values between -1 and 1 for the angular velocity and between 0.5 and 1.0 for the linear velocity when the tag is detected
+
+### Transformations and rotations
+
+
+
 ### Final video
 
 https://github.com/user-attachments/assets/60156681-0c5c-440b-9164-6631906eacab
