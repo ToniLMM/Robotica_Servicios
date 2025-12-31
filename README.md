@@ -546,6 +546,8 @@ cv2.circle(image, (cX, cY), 5, (0, 0, 255), -1)
 
 ### Pose Estimation Using PnP
 
+Once a tag is detected, we estimate the robot’s position and orientation using PnP (Perspective-n-Point). This algorithm calculates the 3D pose of an object from known 3D points and their corresponding 2D projections in the image.
+
 
 
 ### Navigation
