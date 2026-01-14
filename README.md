@@ -25,6 +25,11 @@ This will be Toni's Services Robotics blog, where the status of the practices, t
 
 The objective of this exercise is to implement the logic of a navigation algorithm for an autonomous vacuum cleaner by making use of the location of the robot. The robot is equipped with a map and knows it’s current location in it. The main objective will be to cover the largest area of ​​a house using the programmed algorithm
 
+### Final video
+
+
+https://github.com/user-attachments/assets/9f8dda3d-6f51-4755-92f4-f581e92ed201
+
 
 ## Practice 2: Rescue People
 
