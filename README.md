@@ -25,6 +25,34 @@ This will be Toni's Services Robotics blog, where the status of the practices, t
 
 The objective of this exercise is to implement the logic of a navigation algorithm for an autonomous vacuum cleaner by making use of the location of the robot. The robot is equipped with a map and knows it’s current location in it. The main objective will be to cover the largest area of ​​a house using the programmed algorithm
 
+### Coordinates conversion
+
+The environment map is provided as an image, but the robot operates in continuous Gazebo coordinates. To enable grid-based planning, the map is discretized into fixed-size cells and a conversion between coordinate systems is defined. The map image is divided into square cells of 37 × 37 pixels, a little big bigger than the 35x35 robot's measure. Each cell represents a small area of the environment. By analyzing the pixels inside each cell, it is classified as free, occupied, or unknown. This grid structure is later used for planning and navigation.
+
+To locate the robot on the grid, Gazebo coordinates (x, y) are converted into grid cell indices (i, j).
+
+First, the Gazebo coordinates are expressed in homogeneous form and aligned with the map using a translation matrix:
+
+```python
+T = [[1, 0, -5.75],
+     [0, 1,  4.18],
+     [0, 0,  1]]
+```
+
+After translation, the coordinates are scaled to pixel space:
+```python
+u = scale_x * x
+v = scale_y * y
+```
+
+Finally, pixel coordinates are converted into grid indices by dividing by the cell size:
+```python
+i = v // CELL_SIZE
+j = u // CELL_SIZE
+```
+
+When the robot needs to move to a specific cell, the inverse transformation is applied. The center of the target cell is converted back into pixel coordinates, scaled to world units, and the translation is reversed. This ensures that movement commands always target the center of a grid cell in Gazebo.
+
 ### Final video
 
 
