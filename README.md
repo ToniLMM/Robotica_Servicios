@@ -104,7 +104,15 @@ After reaching the target, the robot stops, the cell is marked as visited, and n
 
 ### Final video
 
+Priority west -> north -> south -> east:
+
 https://github.com/user-attachments/assets/9f8dda3d-6f51-4755-92f4-f581e92ed201
+
+
+Priority east -> north -> south -> west:
+
+https://github.com/user-attachments/assets/415a14c0-78de-43c0-8633-69e3d001701e
+
 
 
 ## Practice 2: Rescue People
