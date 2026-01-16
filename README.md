@@ -53,8 +53,56 @@ j = u // CELL_SIZE
 
 When the robot needs to move to a specific cell, the inverse transformation is applied. The center of the target cell is converted back into pixel coordinates, scaled to world units, and the translation is reversed. This ensures that movement commands always target the center of a grid cell in Gazebo.
 
-### Final video
+### Cell Color Legend
 
+- Gray: Free map background (unexplored area)
+- Black: Obstacles, unknown cells, and grid lines
+- Red (128): Critical points where the robot gets stuck and triggers BFS
+- Blue (129): Current robot position
+- Yellow (130): Planned but not yet visited cells
+- Green (131): Visited (cleaned) cells
+- Orange (132): BFS return path cells
+- Purple (134): Next target cell during execution
+
+### Route Planning: BSA with BFS Recovery
+
+The route planning approach combines a Backtracking Spiral Algorithm (BSA) for local exploration with Breadth-First Search (BFS) as a recovery mechanism to ensure full map coverage.
+
+The BSA works on the grid by selecting the next cell using a fixed priority order (west, north, south, east). At each step, the robot moves to the first neighboring cell that is free and has not been visited or planned. This produces a simple and systematic sweeping behavior that efficiently covers open areas while avoiding unnecessary revisits.
+
+Since BSA is a local strategy, the robot may eventually reach a dead-end where all neighboring cells are either visited or blocked. When this happens, the robot is considered stuck, even though unexplored free cells may still exist elsewhere in the map.
+
+To solve this, a BFS recovery step is triggered. BFS searches from the current cell through free cells until it finds the nearest unvisited one. Because BFS expands level by level, it guarantees the shortest path in grid distance. The robot then follows this path to reach the new area and resumes the sweeping process.
+
+This combination ensures both efficiency and completeness: BSA provides fast local coverage, while BFS guarantees that all reachable free cells are eventually explored.
+
+### Navigation
+
+Navigation is performed by moving the robot from one grid cell to the next. Each target cell is converted to Gazebo coordinates by using the center of the cell as the navigation goal.
+
+Before moving forward, the robot rotates to face the target direction. The desired orientation is predefined based on the relative position of the current cell and the next one, and a proportional controller is used to minimize the angular error.
+
+Once aligned, the robot advances toward the target using a distance-based linear velocity. The robot slows down as it approaches the goal and applies small angular corrections to compensate for orientation drift. The motion ends when the robot is within a position tolerance of the target cell.
+
+```python
+# Rotate to face target direction
+angle_error = normalize_angle(target_yaw - current_pose.yaw)
+while abs(angle_error) > ANGLE_TOLERANCE:
+    HAL.setW(1.2 * angle_error)
+    HAL.setV(0)
+    angle_error = normalize_angle(target_yaw - HAL.getPose3d().yaw)
+
+# Move forward to target cell
+while distance_to_target > POSITION_TOLERANCE:
+    v = min(LINEAR_SPEED, 0.8 * distance_to_target)
+    w = 0.8 * normalize_angle(target_yaw - current_pose.yaw)
+    HAL.setV(v)
+    HAL.setW(w)
+```
+
+After reaching the target, the robot stops, the cell is marked as visited, and navigation continues with the next planned cell. This approach provides reliable and precise motion between adjacent cells in the grid.
+
+### Final video
 
 https://github.com/user-attachments/assets/9f8dda3d-6f51-4755-92f4-f581e92ed201
 
