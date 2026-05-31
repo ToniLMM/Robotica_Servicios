@@ -735,4 +735,11 @@ This is a pseudo-random simple implementation, where the robot has 2 differnt st
 
 https://github.com/user-attachments/assets/60156681-0c5c-440b-9164-6631906eacab
 
+#### Updated Demonstration
+
+The following video shows the improved localization system. The estimated pose is now continuously updated using odometry, allowing the robot to keep tracking its position even when no AprilTag is visible. Whenever a tag is detected, the pose estimate is corrected using visual localization.
+
+[Screencast from 2026-05-31 18-16-28.webm](https://github.com/user-attachments/assets/d9f4af3a-7d82-43ea-9330-c04423e42b35)
+
+
 
