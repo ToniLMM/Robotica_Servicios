@@ -702,6 +702,26 @@ def create_rotation_matrix_z(): ... # -90º (-pi/2)
 
 Finally, we extract the (x, y, yaw) coordinates from the transformation matrix, giving the robot’s estimated pose.
 
+### Odometry-Based Pose Tracking
+
+AprilTags provide accurate pose estimates when a marker is visible. However, relying only on visual detections would cause the estimated pose to remain unchanged between observations.
+
+To maintain a continuous estimate, odometry is used to propagate the robot pose. Whenever an AprilTag is detected, the estimated pose is corrected using visual localization. Between detections, the pose is updated using the incremental motion obtained from the odometry data:
+
+```python
+odom = HAL.getOdom()
+
+dx = odom.x - last_odom_x
+dy = odom.y - last_odom_y
+dyaw = odom.yaw - last_odom_yaw
+
+estimated_pose = (
+    x + dx,
+    y + dy,
+    normalize_angle(yaw + dyaw)
+)
+```
+
 ### Navigation
 
 This is a pseudo-random simple implementation, where the robot has 2 differnt states:
